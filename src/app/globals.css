@@ -5,14 +5,15 @@
 @import './theme.css';
 
 :root {
-  --radius: 0.625rem;
+  --radius: 10px;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
+  /* Brand: Venuze orange */
+  --primary: #FF5037;
   --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
@@ -24,6 +25,8 @@
   --border: oklch(0.922 0 0);
   --input: oklch(0.922 0 0);
   --ring: oklch(0.708 0 0);
+  /* Form-field caption gray (#808080) */
+  --form-muted: #808080;
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -62,6 +65,7 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
+  --color-form-muted: var(--form-muted);
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
@@ -75,6 +79,36 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@theme {
+  /* Typography scale — Poppins; values from Figma. Each token carries its
+     size + line-height + letter-spacing + weight so `text-<name>` is enough. */
+  --text-hero: 70px;
+  --text-hero--line-height: 80px;
+  --text-hero--letter-spacing: -0.03em;
+  --text-hero--font-weight: 600;
+
+  --text-search-cta: 24px;
+  --text-search-cta--line-height: 120%;
+  --text-search-cta--letter-spacing: -0.02em;
+  --text-search-cta--font-weight: 600;
+
+  --text-field-value: 16px;
+  --text-field-value--line-height: 100%;
+  --text-field-value--font-weight: 500;
+
+  --text-field-label: 14px;
+  --text-field-label--line-height: 100%;
+  --text-field-label--font-weight: 400;
+
+  --text-tab: 14px;
+  --text-tab--line-height: 100%;
+  --text-tab--font-weight: 600;
+
+  --text-nav: 14px;
+  --text-nav--line-height: 140%;
+  --text-nav--font-weight: 600;
 }
 
 @layer base {
