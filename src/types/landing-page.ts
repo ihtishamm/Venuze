@@ -42,8 +42,34 @@ export interface VenueCategoriesContent {
   categories: VenueCategory[];
 }
 
+export interface FeaturedVenueCategory {
+  id: string;
+  label: string;
+}
+
+export interface FeaturedVenue {
+  id: string;
+  name: string;
+  location: string;
+  images: string[];
+  alt: string;
+  verified?: boolean;
+  capacity: string;
+  size: string;
+  parking: string;
+  moreAmenities?: number;
+  price: string;
+}
+
+export interface FeaturedVenuesContent {
+  title: string;
+  categories: FeaturedVenueCategory[];
+  venues: FeaturedVenue[];
+}
+
 export interface LandingContent {
   navbar: NavbarContent;
   hero: HeroContent;
   venueCategories: VenueCategoriesContent;
+  featuredVenues: FeaturedVenuesContent;
 }
