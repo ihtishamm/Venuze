@@ -28,7 +28,22 @@ export interface NavbarContent {
   language: { label: string };
 }
 
+export interface VenueCategory {
+  id: string;
+  name: string;
+  venueCount: number;
+  image: string;
+  alt: string;
+}
+
+export interface VenueCategoriesContent {
+  title: string;
+  description: string;
+  categories: VenueCategory[];
+}
+
 export interface LandingContent {
   navbar: NavbarContent;
   hero: HeroContent;
+  venueCategories: VenueCategoriesContent;
 }

@@ -1,13 +1,11 @@
 import { Hero } from './components/hero';
+import { VenueCategories } from './components/venue-categories';
 
-/**
- * Composes the public landing page from independent sections, in order.
- * Add each new Figma section here as its own component.
- */
 export function LandingPage() {
   return (
     <>
       <Hero />
+      <VenueCategories />
       {/* Upcoming sections go here */}
     </>
   );
