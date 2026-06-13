@@ -1,6 +1,9 @@
 import { FeaturedVenues } from './components/featured-venues';
 import { Hero } from './components/hero';
+import { PerfectVenuePath } from './components/perfect-venue-path';
 import { VenueCategories } from './components/venue-categories';
+import { VendorCategories } from './components/vendor-categories';
+import { VendorCtaBanner } from './components/vendor-cta-banner';
 
 export function LandingPage() {
   return (
@@ -8,7 +11,9 @@ export function LandingPage() {
       <Hero />
       <VenueCategories />
       <FeaturedVenues />
-      {/* Upcoming sections go here */}
+      <VendorCategories />
+      <VendorCtaBanner />
+      <PerfectVenuePath />
     </>
   );
 }

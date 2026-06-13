@@ -120,7 +120,7 @@ export function VenueCard({ venue }: { venue: FeaturedVenue }) {
       </div>
 
       {/* White content */}
-      <div className='flex flex-1 flex-col bg-white px-[17px] pt-[13px] pb-[16px]'>
+      <div className='-mt-px flex flex-1 flex-col bg-white px-[17px] pt-[13px] pb-[16px]'>
         {/* Title */}
         <h3 className='line-clamp-2 text-[16px] font-semibold leading-[24px] text-gray-900'>
           {venue.name}
@@ -167,7 +167,7 @@ export function VenueCard({ venue }: { venue: FeaturedVenue }) {
           </p>
           <button
             type='button'
-            className='flex h-[32px] w-[94px] items-center justify-center rounded-[10px] border border-primary px-[15px] py-[8px] text-[11.05px] font-medium leading-[18.41px] tracking-[-0.03em] text-primary transition-colors hover:bg-primary hover:text-white'
+            className='flex h-[32px] shrink-0 items-center justify-center rounded-[10px] border border-primary px-[15px] py-[8px] text-[11.05px] font-medium leading-[18.41px] tracking-[-0.03em] whitespace-nowrap text-primary transition-colors hover:bg-primary hover:text-white'
           >
             View details
           </button>

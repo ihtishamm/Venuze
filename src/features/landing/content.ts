@@ -66,6 +66,43 @@ export const landingContent: LandingContent = {
       }
     ]
   },
+  vendorCategories: {
+    title: 'Complete Your Event with our Trusted Vendors',
+    description:
+      'Venues are just the beginning. Discover caterers, decorators, photographers, entertainment, and more all in one place, ready to bring your event project to life.',
+    categories: [
+      {
+        id: 'caterers',
+        name: 'Caterers',
+        image: '/caterer.png',
+        alt: 'Catering setup with chafing dishes'
+      },
+      {
+        id: 'decorators',
+        name: 'Decorators',
+        image: '/decorators.png',
+        alt: 'Floral arch decoration for events'
+      },
+      {
+        id: 'photographers',
+        name: 'Photographers',
+        image: '/photographers.png',
+        alt: 'Photographer with professional camera'
+      },
+      {
+        id: 'entertainment',
+        name: 'Entertainment',
+        image: '/entertainment.png',
+        alt: 'Couple enjoying entertainment at a fair'
+      },
+      {
+        id: 'florists',
+        name: 'Florists',
+        image: '/caterer.png',
+        alt: 'Elegant floral arrangements for events'
+      }
+    ]
+  },
   featuredVenues: {
     title: 'Featured Venues',
     categories: [
@@ -155,6 +192,37 @@ export const landingContent: LandingContent = {
         parking: 'Free parking',
         moreAmenities: 30,
         price: '$80'
+      }
+    ]
+  },
+  vendorCtaBanner: {
+    title: 'Grow Your Business with Venuze',
+    description:
+      'Showcase your services to thousands of event organizers and creators searching for talent like yours.',
+    buttonLabel: 'Join as a Vendor'
+  },
+  perfectVenuePath: {
+    title: 'Your Path to the Perfect Venue',
+    description:
+      "Planning an event, production, or gathering shouldn't feel complicated. Our streamlined process connects you with the right venues and trusted professionals, taking the stress out of logistics so you can focus on what matters most — making it a success.",
+    steps: [
+      {
+        number: 1,
+        title: 'Search & filter',
+        description:
+          'Browse our curated collection of venues and event professionals. Use smart filters, high-quality visuals, and authentic reviews to find options that fit your needs, style, and budget.'
+      },
+      {
+        number: 2,
+        title: 'Compare & message',
+        description:
+          'Communicate directly with venue hosts and service providers. Request tailored quotes, discuss requirements, and design every detail of your event or project with confidence.'
+      },
+      {
+        number: 3,
+        title: 'Book & add services',
+        description:
+          'Secure your choices with ease through our protected booking system. With clear agreements, secure payments, and ongoing support, you can move forward knowing everything is handled.'
       }
     ]
   }

@@ -67,9 +67,43 @@ export interface FeaturedVenuesContent {
   venues: FeaturedVenue[];
 }
 
+export interface VendorCategory {
+  id: string;
+  name: string;
+  image: string;
+  alt: string;
+}
+
+export interface VendorCategoriesContent {
+  title: string;
+  description: string;
+  categories: VendorCategory[];
+}
+
+export interface VendorCtaBannerContent {
+  title: string;
+  description: string;
+  buttonLabel: string;
+}
+
+export interface PerfectVenueStep {
+  number: number;
+  title: string;
+  description: string;
+}
+
+export interface PerfectVenuePathContent {
+  title: string;
+  description: string;
+  steps: PerfectVenueStep[];
+}
+
 export interface LandingContent {
   navbar: NavbarContent;
   hero: HeroContent;
   venueCategories: VenueCategoriesContent;
   featuredVenues: FeaturedVenuesContent;
+  vendorCategories: VendorCategoriesContent;
+  vendorCtaBanner: VendorCtaBannerContent;
+  perfectVenuePath: PerfectVenuePathContent;
 }

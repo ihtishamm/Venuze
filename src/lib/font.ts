@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils';
 
 const fontSans = Geist({
   subsets: ['latin'],
-  variable: '--font-sans'
+  variable: '--font-geist'
 });
 
 const fontMono = Geist_Mono({
