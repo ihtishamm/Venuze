@@ -2,9 +2,10 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { Search, User } from 'lucide-react';
+import { Search } from 'lucide-react';
 
 import { landingContent } from '@/features/landing/content';
+import { AccountMenu } from '@/features/landing/components/account-menu';
 import { Logo } from '@/features/landing/components/logo';
 import { type SearchSummary } from '@/types/search';
 
@@ -60,23 +61,11 @@ export function SearchHeader({ summary }: { summary: SearchSummary }) {
             {language.label}
             <Image src='/downicon.svg' alt='' width={14} height={8} />
           </button>
-          <button
-            type='button'
-            aria-label='Account'
-            className='text-primary flex size-[40px] items-center justify-center rounded-[10px] border border-[#E5E5E5] shadow-sm'
-          >
-            <User className='size-5' />
-          </button>
+          <AccountMenu className='border border-[#E5E5E5]' />
         </div>
 
         {/* Account only on mobile */}
-        <button
-          type='button'
-          aria-label='Account'
-          className='text-primary flex size-[40px] items-center justify-center rounded-[10px] border border-[#E5E5E5] shadow-sm lg:hidden'
-        >
-          <User className='size-5' />
-        </button>
+        <AccountMenu className='border border-[#E5E5E5] lg:hidden' />
       </div>
     </header>
   );

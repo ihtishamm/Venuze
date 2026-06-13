@@ -358,21 +358,21 @@ export const landingContent: LandingContent = {
         ]
       },
       {
-        title: 'Support',
-        links: [
-          { label: 'Listings your venue', href: '#' },
-          { label: 'Listing your service', href: '#' },
-          { label: 'Help center', href: '#' },
-          { label: 'FAQ', href: '#' }
-        ]
-      },
-      {
         title: 'Explore',
         links: [
           { label: 'Venue types', href: '#' },
           { label: 'Venue features', href: '#' },
           { label: 'Service options', href: '#' },
           { label: 'Locations', href: '#' }
+        ]
+      },
+      {
+        title: 'Support',
+        links: [
+          { label: 'Listings your venue', href: '#' },
+          { label: 'Listing your service', href: '#' },
+          { label: 'Help center', href: '#' },
+          { label: 'FAQ', href: '#' }
         ]
       },
       {

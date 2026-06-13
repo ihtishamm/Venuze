@@ -13,12 +13,13 @@ import {
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
 import { useAuthStore } from '@/features/auth/store/auth-store';
+import { cn } from '@/lib/utils';
 
 /**
  * Account dropdown for the public navbar. Signed out → a Login entry that routes
  * to the sign-in page. Signed in → the user's details plus dashboard / sign-out.
  */
-export function AccountMenu() {
+export function AccountMenu({ className }: { className?: string }) {
   const user = useAuthStore((s) => s.user);
   const logout = useAuthStore((s) => s.logout);
   const router = useRouter();
@@ -34,7 +35,10 @@ export function AccountMenu() {
         <button
           type='button'
           aria-label={user ? 'Account' : 'Login'}
-          className='text-primary flex size-[40px] items-center justify-center rounded-[10px] bg-white shadow-sm outline-none'
+          className={cn(
+            'text-primary flex size-[40px] items-center justify-center rounded-[10px] bg-white shadow-sm outline-none',
+            className
+          )}
         >
           <User className='size-5' />
         </button>

@@ -8,6 +8,7 @@ import { Facebook, Instagram } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import { cn } from '@/lib/utils';
 import { type SocialPlatform } from '@/types/landing-page';
 
 import { landingContent } from '../content';
@@ -34,7 +35,12 @@ const socialIcons: Record<
   instagram: ({ className }) => <Instagram className={className} />
 };
 
-export function Footer() {
+/**
+ * @param overlap When true (landing page), the footer pulls up with a negative
+ *   margin to tuck under the preceding rounded CTA section. Set false to render
+ *   it as a standalone footer (e.g. the search page) with normal top padding.
+ */
+export function Footer({ overlap = true }: { overlap?: boolean }) {
   const { tagline, columns, contact, socials, copyright } =
     landingContent.footer;
 
@@ -44,8 +50,18 @@ export function Footer() {
   };
 
   return (
-    <footer className='relative z-10 -mt-[80px] w-full rounded-t-[50px] bg-black text-white lg:-mt-[140px]'>
-      <div className='mx-auto max-w-[1440px] px-6 pt-[140px] pb-[40px] sm:px-10 lg:px-[81px] lg:pt-[200px]'>
+    <footer
+      className={cn(
+        'relative z-10 w-full rounded-t-[50px] bg-black text-white',
+        overlap && '-mt-[80px] lg:-mt-[140px]'
+      )}
+    >
+      <div
+        className={cn(
+          'mx-auto max-w-[1440px] px-6 pb-[40px] sm:px-10 lg:px-[81px]',
+          overlap ? 'pt-[140px] lg:pt-[200px]' : 'pt-[60px] lg:pt-[80px]'
+        )}
+      >
         <div className='grid grid-cols-1 gap-x-[80px] gap-y-[48px] lg:grid-cols-2'>
           {/* ── Left: logo, tagline, link columns ─────────────── */}
           <div className='flex flex-col gap-[40px]'>
