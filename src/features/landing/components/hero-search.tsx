@@ -1,4 +1,8 @@
+'use client';
+
+import { useMemo, useState } from 'react';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { ChevronDown, Search } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
@@ -14,15 +18,37 @@ const tabIcons: Record<HeroTabIconKey, string> = {
 
 /**
  * Hero search widget: a tab group (Venue / Vendors) over a card of search fields.
- * Layout-only for now — fields render their selected value; real inputs and tab
- * switching are wired in a later pass.
+ * Tabs switch the active mode; the Search button carries the selected Where /
+ * When / Guests values into the `/search` results page via the URL.
  *
  * Responsive: stacks vertically on mobile (tabs inside the card top); on md+ the
  * tabs float above the card center and the fields sit in a single row.
  */
 export function HeroSearch() {
+  const router = useRouter();
   const { searchTabs, searchFields, searchLabel } = landingContent.hero;
-  const activeTabId = searchTabs[0]?.id;
+  const [activeTabId, setActiveTabId] = useState(searchTabs[0]?.id ?? 'venue');
+
+  /** Field values are presets in this scaffold — read them straight from content. */
+  const fieldValues = useMemo(() => {
+    const byId = (id: string) =>
+      searchFields.find((f) => f.id === id)?.value ?? '';
+    return {
+      where: byId('where'),
+      when: byId('when'),
+      guests: byId('guests')
+    };
+  }, [searchFields]);
+
+  const handleSearch = () => {
+    const params = new URLSearchParams({
+      tab: activeTabId,
+      where: fieldValues.where,
+      when: fieldValues.when,
+      guests: fieldValues.guests
+    });
+    router.push(`/search?${params.toString()}`);
+  };
 
   return (
     <div className='relative mx-auto flex h-[335px] w-[311px] flex-col items-center justify-between rounded-[10px] bg-white px-[15px] py-[15px] shadow-xl md:h-[100px] md:w-full md:max-w-[1054px] md:flex-row md:justify-start md:gap-0 md:p-2 md:pl-5'>
@@ -35,8 +61,9 @@ export function HeroSearch() {
             <button
               type='button'
               key={tab.id}
+              onClick={() => setActiveTabId(tab.id)}
               className={cn(
-                'flex h-full w-full items-center justify-center gap-2 rounded-[10px] text-[14px] leading-none font-semibold',
+                'flex h-full w-full items-center justify-center gap-2 rounded-[10px] text-[14px] leading-none font-semibold transition-colors',
                 isActive ? 'bg-primary text-white' : 'bg-transparent text-black'
               )}
             >
@@ -78,7 +105,8 @@ export function HeroSearch() {
       {/* Search action */}
       <button
         type='button'
-        className='bg-primary text-search-cta flex h-[48px] w-full shrink-0 items-center justify-center gap-2 rounded-[10px] text-white md:ml-2 md:h-auto md:w-auto md:px-8 md:py-3.5'
+        onClick={handleSearch}
+        className='bg-primary text-search-cta flex h-[48px] w-full shrink-0 items-center justify-center gap-2 rounded-[10px] text-white transition-opacity hover:opacity-95 md:ml-2 md:h-auto md:w-auto md:px-8 md:py-3.5'
       >
         <Search className='size-6' />
         {searchLabel}
