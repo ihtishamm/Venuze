@@ -119,7 +119,11 @@ export const landingContent: LandingContent = {
         id: 'fv-1',
         name: 'High-Spec Room in Trendy Home Clapham/ Stockwell',
         location: 'London, SW1',
-        images: ['/venue_category_1.png', '/venue_category_2.png', '/venue_category_3.png'],
+        images: [
+          '/venue_category_1.png',
+          '/venue_category_2.png',
+          '/venue_category_3.png'
+        ],
         alt: 'Celebration venue with festive lighting',
         verified: true,
         capacity: '300+',
@@ -132,7 +136,11 @@ export const landingContent: LandingContent = {
         id: 'fv-2',
         name: 'High-Spec Room in Trendy Home Clapham/ Stockwell',
         location: 'London, SW1',
-        images: ['/venue_category_2.png', '/venue_category_3.png', '/venue_category_4.png'],
+        images: [
+          '/venue_category_2.png',
+          '/venue_category_3.png',
+          '/venue_category_4.png'
+        ],
         alt: 'Private party venue with candle lighting',
         verified: true,
         capacity: '300+',
@@ -145,7 +153,11 @@ export const landingContent: LandingContent = {
         id: 'fv-3',
         name: 'High-Spec Room in Trendy Home Clapham/ Stockwell',
         location: 'London, SW1',
-        images: ['/venue_category_3.png', '/venue_category_4.png', '/venue_category_1.png'],
+        images: [
+          '/venue_category_3.png',
+          '/venue_category_4.png',
+          '/venue_category_1.png'
+        ],
         alt: 'Corporate meeting room with professionals',
         verified: true,
         capacity: '300+',
@@ -158,7 +170,11 @@ export const landingContent: LandingContent = {
         id: 'fv-4',
         name: 'High-Spec Room in Trendy Home Clapham/ Stockwell',
         location: 'London, SW1',
-        images: ['/venue_category_4.png', '/venue_category_1.png', '/venue_category_2.png'],
+        images: [
+          '/venue_category_4.png',
+          '/venue_category_1.png',
+          '/venue_category_2.png'
+        ],
         alt: 'Creative studio with professional equipment',
         verified: true,
         capacity: '300+',
@@ -171,7 +187,11 @@ export const landingContent: LandingContent = {
         id: 'fv-5',
         name: 'High-Spec Room in Trendy Home Clapham/ Stockwell',
         location: 'London, SW1',
-        images: ['/venue_category_1.png', '/venue_category_3.png', '/venue_category_4.png'],
+        images: [
+          '/venue_category_1.png',
+          '/venue_category_3.png',
+          '/venue_category_4.png'
+        ],
         alt: 'Rooftop venue with city views',
         verified: true,
         capacity: '200+',
@@ -184,7 +204,11 @@ export const landingContent: LandingContent = {
         id: 'fv-6',
         name: 'High-Spec Room in Trendy Home Clapham/ Stockwell',
         location: 'London, SW1',
-        images: ['/venue_category_2.png', '/venue_category_4.png', '/venue_category_3.png'],
+        images: [
+          '/venue_category_2.png',
+          '/venue_category_4.png',
+          '/venue_category_3.png'
+        ],
         alt: 'Elegant ballroom venue',
         verified: true,
         capacity: '500+',
@@ -223,6 +247,57 @@ export const landingContent: LandingContent = {
         title: 'Book & add services',
         description:
           'Secure your choices with ease through our protected booking system. With clear agreements, secure payments, and ongoing support, you can move forward knowing everything is handled.'
+      }
+    ]
+  },
+  trustedCreators: {
+    title: 'Trusted by Event Creators Who Demand Excellence',
+    description:
+      'Join thousands of planners and hosts who love our seamless discovery and booking experience.',
+    stats: [
+      {
+        id: 'venues',
+        value: '1,500+',
+        label: 'Venues Vetted & Approved',
+        color: '#FF786A'
+      },
+      {
+        id: 'events',
+        value: '7,500+',
+        label: 'Events Successfully Hosted',
+        color: '#FF4F37'
+      },
+      {
+        id: 'cities',
+        value: '35+',
+        label: 'Cities Across the Region',
+        color: '#FE8B16'
+      },
+      {
+        id: 'rating',
+        value: '4.9',
+        label: 'Average Host Rating',
+        color: '#FEC432',
+        textColor: '#000000',
+        showStar: true
+      }
+    ],
+    reviews: [
+      {
+        id: 'review-1',
+        quote:
+          'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+        name: 'Michael Carter',
+        image: '/micheal.png',
+        alt: 'Michael Carter'
+      },
+      {
+        id: 'review-2',
+        quote:
+          'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+        name: 'by Ayesha M.',
+        image: '/ayesha.png',
+        alt: 'Ayesha M.'
       }
     ]
   }

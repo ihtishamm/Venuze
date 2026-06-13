@@ -98,6 +98,33 @@ export interface PerfectVenuePathContent {
   steps: PerfectVenueStep[];
 }
 
+export interface TrustStat {
+  id: string;
+  value: string;
+  label: string;
+  /** Card background color. */
+  color: string;
+  /** Text color for the card. Defaults to white. */
+  textColor?: string;
+  /** Renders a trailing star glyph next to the value (e.g. rating). */
+  showStar?: boolean;
+}
+
+export interface TrustReview {
+  id: string;
+  quote: string;
+  name: string;
+  image: string;
+  alt: string;
+}
+
+export interface TrustedCreatorsContent {
+  title: string;
+  description: string;
+  stats: TrustStat[];
+  reviews: TrustReview[];
+}
+
 export interface LandingContent {
   navbar: NavbarContent;
   hero: HeroContent;
@@ -106,4 +133,5 @@ export interface LandingContent {
   vendorCategories: VendorCategoriesContent;
   vendorCtaBanner: VendorCtaBannerContent;
   perfectVenuePath: PerfectVenuePathContent;
+  trustedCreators: TrustedCreatorsContent;
 }
