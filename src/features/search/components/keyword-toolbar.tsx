@@ -6,12 +6,14 @@ export function KeywordToolbar({
   value,
   placeholder,
   onChange,
-  activeFilterCount
+  activeFilterCount,
+  onOpenFilters
 }: {
   value: string;
   placeholder: string;
   onChange: (next: string) => void;
   activeFilterCount: number;
+  onOpenFilters: () => void;
 }) {
   return (
     <div className='flex h-[50px] w-full items-center'>
@@ -34,6 +36,7 @@ export function KeywordToolbar({
       {/* Filters button */}
       <button
         type='button'
+        onClick={onOpenFilters}
         className='flex h-[34px] shrink-0 items-center gap-[8px] rounded-[10px] py-[10px] pl-[20px] text-[16px] font-medium text-black'
       >
         <SlidersHorizontal className='size-[18px]' />

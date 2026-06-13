@@ -38,9 +38,33 @@ export interface SearchSummary {
   guests: string;
 }
 
+/** Inclusive numeric bounds for a range slider. */
+export interface RangeBounds {
+  min: number;
+  max: number;
+}
+
+/** Option lists and bounds that populate the filter drawer. */
+export interface FilterDrawerContent {
+  venueTypes: string[];
+  occasions: string[];
+  capacity: RangeBounds;
+  price: RangeBounds;
+}
+
+/** The user's currently applied search filters. */
+export interface SearchFilters {
+  venueTypes: string[];
+  occasions: string[];
+  capacity: [number, number];
+  price: [number, number];
+  verifiedOnly: boolean;
+}
+
 export interface SearchContent {
   categories: SpaceCategory[];
   filterChips: SearchFilterChip[];
+  filterDrawer: FilterDrawerContent;
   sortLabel: string;
   resultNoun: string;
   keywordPlaceholder: string;

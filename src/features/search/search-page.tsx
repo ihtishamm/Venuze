@@ -4,15 +4,28 @@ import { useMemo, useState } from 'react';
 import { List, Map as MapIcon } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
-import { type SearchSummary } from '@/types/search';
+import { type SearchFilters, type SearchSummary } from '@/types/search';
 
-import { searchContent } from './content';
+import { createDefaultFilters, searchContent } from './content';
 import { CategoryStrip } from './components/category-strip';
+import { FilterDrawer } from './components/filter-drawer';
 import { KeywordToolbar } from './components/keyword-toolbar';
 import { ResultsList } from './components/results-list';
 import { ResultsMap } from './components/results-map';
 import { ResultsToolbar } from './components/results-toolbar';
 import { SearchHeader } from './components/search-header';
+
+/** Counts the filters a user has actually narrowed from the defaults. */
+function countActiveFilters(filters: SearchFilters): number {
+  const { capacity, price } = searchContent.filterDrawer;
+  let count = filters.venueTypes.length + filters.occasions.length;
+  if (filters.capacity[0] !== capacity.min || filters.capacity[1] !== capacity.max)
+    count += 1;
+  if (filters.price[0] !== price.min || filters.price[1] !== price.max)
+    count += 1;
+  if (filters.verifiedOnly) count += 1;
+  return count;
+}
 
 export function SearchPage({ summary }: { summary: SearchSummary }) {
   const { categories, filterChips, sortLabel, resultNoun, keywordPlaceholder } =
@@ -22,6 +35,8 @@ export function SearchPage({ summary }: { summary: SearchSummary }) {
   const [keyword, setKeyword] = useState('');
   const [chips, setChips] = useState(filterChips);
   const [mobileView, setMobileView] = useState<'list' | 'map'>('list');
+  const [filtersOpen, setFiltersOpen] = useState(false);
+  const [filters, setFilters] = useState<SearchFilters>(createDefaultFilters);
 
   const venues = useMemo(() => {
     const q = keyword.trim().toLowerCase();
@@ -52,7 +67,8 @@ export function SearchPage({ summary }: { summary: SearchSummary }) {
             value={keyword}
             placeholder={keywordPlaceholder}
             onChange={setKeyword}
-            activeFilterCount={chips.length}
+            activeFilterCount={countActiveFilters(filters)}
+            onOpenFilters={() => setFiltersOpen(true)}
           />
         </div>
       </div>
@@ -131,6 +147,13 @@ export function SearchPage({ summary }: { summary: SearchSummary }) {
           )}
         </button>
       </div>
+
+      <FilterDrawer
+        open={filtersOpen}
+        onOpenChange={setFiltersOpen}
+        filters={filters}
+        onApply={setFilters}
+      />
     </div>
   );
 }

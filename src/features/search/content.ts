@@ -1,4 +1,4 @@
-import { type SearchContent } from '@/types/search';
+import { type SearchContent, type SearchFilters } from '@/types/search';
 
 export const searchContent: SearchContent = {
   keywordPlaceholder: 'Add keywords...',
@@ -24,6 +24,38 @@ export const searchContent: SearchContent = {
     { id: 'parking', label: 'Parking' },
     { id: 'kitchen', label: 'Kitchen' }
   ],
+  filterDrawer: {
+    venueTypes: [
+      'Office Space',
+      'Meeting',
+      'Private Party',
+      'Villa',
+      'Bar',
+      'Loft',
+      'Appartment',
+      'Ballroom',
+      'Restaurant',
+      'Studio',
+      'House',
+      'Gallery'
+    ],
+    occasions: [
+      'Wedding',
+      'Reception',
+      'Ceremony',
+      'Engagement',
+      'Birthday',
+      'Babyshower',
+      'Concert/Performance',
+      'Brand Launch',
+      'Fashion Show',
+      'Corporate Event',
+      'Conference',
+      'Pop-up'
+    ],
+    capacity: { min: 10, max: 1500 },
+    price: { min: 10, max: 30000 }
+  },
   venues: [
     {
       id: 'sv-1',
@@ -179,3 +211,15 @@ export const searchContent: SearchContent = {
     }
   ]
 };
+
+/** Filters with every option cleared and both ranges at their full bounds. */
+export function createDefaultFilters(): SearchFilters {
+  const { capacity, price } = searchContent.filterDrawer;
+  return {
+    venueTypes: [],
+    occasions: [],
+    capacity: [capacity.min, capacity.max],
+    price: [price.min, price.max],
+    verifiedOnly: false
+  };
+}
