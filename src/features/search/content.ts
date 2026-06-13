@@ -74,7 +74,7 @@ export const searchContent: SearchContent = {
       moreAmenities: 25,
       price: '$50',
       category: 'photo-studio',
-      pin: { top: 30, left: 42 }
+      pin: { top: 52, left: 48 }
     },
     {
       id: 'sv-2',
@@ -93,7 +93,7 @@ export const searchContent: SearchContent = {
       moreAmenities: 25,
       price: '$50',
       category: 'photo-studio',
-      pin: { top: 44, left: 56 }
+      pin: { top: 60, left: 58 }
     },
     {
       id: 'sv-3',
@@ -112,7 +112,7 @@ export const searchContent: SearchContent = {
       moreAmenities: 25,
       price: '$50',
       category: 'film-studio',
-      pin: { top: 52, left: 48 }
+      pin: { top: 56, left: 42 }
     },
     {
       id: 'sv-4',
@@ -131,7 +131,7 @@ export const searchContent: SearchContent = {
       moreAmenities: 25,
       price: '$50',
       category: 'private-party',
-      pin: { top: 38, left: 64 }
+      pin: { top: 64, left: 64 }
     },
     {
       id: 'sv-5',
@@ -150,7 +150,7 @@ export const searchContent: SearchContent = {
       moreAmenities: 25,
       price: '$50',
       category: 'gallery',
-      pin: { top: 60, left: 60 }
+      pin: { top: 68, left: 50 }
     },
     {
       id: 'sv-6',
@@ -169,7 +169,7 @@ export const searchContent: SearchContent = {
       moreAmenities: 25,
       price: '$50',
       category: 'photo-studio',
-      pin: { top: 48, left: 70 }
+      pin: { top: 58, left: 68 }
     },
     {
       id: 'sv-7',
@@ -188,7 +188,7 @@ export const searchContent: SearchContent = {
       moreAmenities: 30,
       price: '$80',
       category: 'warehouse',
-      pin: { top: 66, left: 38 }
+      pin: { top: 70, left: 40 }
     },
     {
       id: 'sv-8',
@@ -207,7 +207,7 @@ export const searchContent: SearchContent = {
       moreAmenities: 18,
       price: '$45',
       category: 'restaurant',
-      pin: { top: 26, left: 54 }
+      pin: { top: 50, left: 60 }
     }
   ]
 };

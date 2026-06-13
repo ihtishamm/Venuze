@@ -12,7 +12,7 @@ export function ResultsMap({ venues }: { venues: SearchVenue[] }) {
   const selected = venues.find((v) => v.id === selectedId) ?? null;
 
   return (
-    <div className='relative h-full w-full overflow-hidden bg-[#E8EDE6] lg:rounded-[10px]'>
+    <div className='relative h-full w-full overflow-hidden bg-[#E8EDE6]'>
       {/* Faux map terrain — water, parks, roads — purely decorative */}
       <div
         aria-hidden

@@ -106,7 +106,7 @@ export function HeroSearch() {
       <button
         type='button'
         onClick={handleSearch}
-        className='bg-primary text-search-cta flex h-[48px] w-full shrink-0 items-center justify-center gap-2 rounded-[10px] text-white transition-opacity hover:opacity-95 md:ml-2 md:h-auto md:w-auto md:px-8 md:py-3.5'
+        className='bg-primary text-search-cta flex h-[48px] w-full shrink-0 cursor-pointer items-center justify-center gap-2 rounded-[10px] text-white transition-opacity hover:opacity-95 md:mr-2 md:ml-2 md:h-auto md:w-auto md:px-8 md:py-3.5'
       >
         <Search className='size-6' />
         {searchLabel}

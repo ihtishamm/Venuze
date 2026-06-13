@@ -91,7 +91,12 @@ export function SearchPage({ summary }: { summary: SearchSummary }) {
 
         {/* Tablet/mobile header — count + list⇄map toggle, shown in both views. */}
         {hasResults && (
-          <div className='mx-auto w-full max-w-[1440px] shrink-0 px-4 pt-3 pb-2 md:px-6 lg:hidden'>
+          <div
+            className={cn(
+              'mx-auto w-full max-w-[1440px] shrink-0 px-4 pt-3 md:px-6 lg:hidden',
+              mobileView === 'map' ? 'pb-0' : 'pb-2'
+            )}
+          >
             <div className='flex items-center justify-between gap-3'>
               <p className='text-[14px] text-[#6B7280]'>
                 {(3456).toLocaleString()}{' '}
@@ -121,11 +126,11 @@ export function SearchPage({ summary }: { summary: SearchSummary }) {
           </div>
         )}
 
-        <div className='mx-auto w-full max-w-[1440px] flex-1 overflow-hidden lg:px-6 lg:pt-3 lg:pb-4'>
+        <div className='mx-auto w-full max-w-[1440px] flex-1 overflow-hidden'>
           <div className='flex h-full lg:gap-4'>
             <div
               className={cn(
-                'flex h-full flex-col px-4 lg:p-0',
+                'flex h-full flex-col px-4 lg:p-0 lg:pt-3 lg:pl-6',
                 hasResults ? 'lg:flex-1' : 'lg:w-full',
                 mobileView === 'list' ? 'flex w-full' : 'hidden lg:flex'
               )}

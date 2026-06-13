@@ -19,7 +19,16 @@ import { cn } from '@/lib/utils';
  * Account dropdown for the public navbar. Signed out → a Login entry that routes
  * to the sign-in page. Signed in → the user's details plus dashboard / sign-out.
  */
-export function AccountMenu({ className }: { className?: string }) {
+export function AccountMenu({
+  className,
+  icon,
+  ariaLabel
+}: {
+  className?: string;
+  /** Trigger icon — defaults to a user icon; the mobile navbar passes a menu icon. */
+  icon?: React.ReactNode;
+  ariaLabel?: string;
+}) {
   const user = useAuthStore((s) => s.user);
   const logout = useAuthStore((s) => s.logout);
   const router = useRouter();
@@ -34,13 +43,13 @@ export function AccountMenu({ className }: { className?: string }) {
       <DropdownMenuTrigger asChild>
         <button
           type='button'
-          aria-label={user ? 'Account' : 'Login'}
+          aria-label={ariaLabel ?? (user ? 'Account' : 'Login')}
           className={cn(
             'text-primary flex size-[40px] items-center justify-center rounded-[10px] bg-white shadow-sm outline-none',
             className
           )}
         >
-          <User className='size-5' />
+          {icon ?? <User className='size-5' />}
         </button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className='w-56' align='end' sideOffset={10}>

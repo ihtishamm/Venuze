@@ -24,9 +24,9 @@ function CategoryTab({
       type='button'
       onClick={onClick}
       className={cn(
-        'h-[50px] shrink-0 rounded-[10px] px-[30px] text-[16px] leading-[100%] tracking-[0%] text-white uppercase transition-colors',
+        'h-[50px] shrink-0 rounded-[10px] px-[30px] text-center text-[16px] leading-[100%] tracking-[0%] text-white uppercase transition-colors',
         isActive
-          ? 'bg-primary font-bold lg:font-normal'
+          ? 'bg-primary font-bold'
           : 'bg-[#B7B7B74D] font-normal hover:opacity-90 lg:bg-[#B7B7B780]'
       )}
     >
@@ -93,7 +93,7 @@ export function FeaturedVenues() {
 
       <div className='relative z-10 mx-auto max-w-[1440px] px-4 pt-[77px] pb-[60px] sm:px-6 lg:px-[215px]'>
         {/* Title */}
-        <h2 className='text-center text-[44px] font-semibold leading-[50px] text-white'>
+        <h2 className='text-center text-[44px] leading-[50px] font-semibold text-white'>
           {title}
         </h2>
 
@@ -120,7 +120,7 @@ export function FeaturedVenues() {
           >
             {venues.map((venue) => (
               <div key={venue.id} style={{ scrollSnapAlign: 'start' }}>
-                <VenueCard venue={venue} />
+                <VenueCard venue={venue} bordered={false} />
               </div>
             ))}
           </div>
@@ -134,9 +134,7 @@ export function FeaturedVenues() {
               aria-label='Previous featured venues'
               className={cn(
                 'flex h-[42px] w-[42px] items-center justify-center rounded-full border-2 border-white shadow-[0px_1px_4px_0px_#00000040] transition-opacity',
-                atStart
-                  ? 'cursor-not-allowed opacity-40'
-                  : 'hover:bg-white/20'
+                atStart ? 'cursor-not-allowed opacity-40' : 'hover:bg-white/20'
               )}
             >
               <ChevronLeft className='h-5 w-5 text-white' />

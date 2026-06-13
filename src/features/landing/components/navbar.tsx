@@ -40,18 +40,16 @@ export function Navbar() {
         <div className='flex items-center gap-2 md:hidden'>
           <button
             type='button'
-            className='text-black text-nav flex h-[40px] items-center gap-2 rounded-[10px] bg-white px-4 py-[10px] shadow-sm'
+            className='text-nav flex h-[40px] items-center gap-2 rounded-[10px] bg-white px-4 py-[10px] text-black shadow-sm'
           >
             {addListing.label}
             <Image src='/downicon.svg' alt='Expand' width={14} height={8} />
           </button>
-          <button
-            type='button'
-            aria-label='Open menu'
-            className='text-black flex size-[40px] items-center justify-center rounded-[10px] bg-white shadow-sm'
-          >
-            <Menu className='size-5' />
-          </button>
+          <AccountMenu
+            ariaLabel='Open menu'
+            className='text-black'
+            icon={<Menu className='size-5' />}
+          />
         </div>
       </nav>
     </header>
