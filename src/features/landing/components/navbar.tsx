@@ -1,7 +1,8 @@
 import Image from 'next/image';
-import { Menu, User } from 'lucide-react';
+import { Menu } from 'lucide-react';
 
 import { landingContent } from '../content';
+import { AccountMenu } from './account-menu';
 import { Logo } from './logo';
 
 /**
@@ -32,13 +33,7 @@ export function Navbar() {
             {language.label}
             <Image src='/downicon.svg' alt='Expand' width={14} height={8} />
           </button>
-          <button
-            type='button'
-            aria-label='Account'
-            className='text-primary flex size-[40px] items-center justify-center rounded-[10px] bg-white shadow-sm'
-          >
-            <User className='size-5' />
-          </button>
+          <AccountMenu />
         </div>
 
         {/* Mobile actions */}

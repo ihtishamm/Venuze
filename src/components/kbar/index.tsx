@@ -21,7 +21,18 @@ export default function KBar({ children }: { children: React.ReactNode }) {
       router.push(url);
     };
 
-    return navItems.flatMap((navItem) => {
+    // Home is intentionally not part of the sidebar nav, so register it here.
+    const homeAction = {
+      id: 'homeAction',
+      name: 'Home',
+      shortcut: ['h', 'h'],
+      keywords: 'home landing start',
+      section: 'Navigation',
+      subtitle: 'Go to Home',
+      perform: () => navigateTo('/')
+    };
+
+    const navActions = navItems.flatMap((navItem) => {
       // Only include base action if the navItem has a real URL and is not just a container
       const baseAction =
         navItem.url !== '#'
@@ -51,6 +62,8 @@ export default function KBar({ children }: { children: React.ReactNode }) {
       // Return only valid actions (ignoring null base actions for containers)
       return baseAction ? [baseAction, ...childActions] : childActions;
     });
+
+    return [homeAction, ...navActions];
   }, [router]);
 
   return (
