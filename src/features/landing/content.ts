@@ -300,5 +300,42 @@ export const landingContent: LandingContent = {
         alt: 'Ayesha M.'
       }
     ]
+  },
+  destinations: {
+    title: 'Discover Exceptional Destinations Across the Region',
+    description:
+      'From cosmopolitan cityscapes to cultural treasures, explore where celebrations come alive with local flavor.',
+    destinations: [
+      {
+        id: 'new-york',
+        name: 'New York, USA',
+        venueCount: 24,
+        description: 'Coastal energy, modern Venue',
+        popular: 'Popular: Rooftop',
+        price: 'From $50 per hour',
+        image: '/newyork.png',
+        alt: 'New York skyline at golden hour'
+      },
+      {
+        id: 'london',
+        name: 'London, UK',
+        venueCount: 108,
+        description: 'Coastal energy, modern Venue',
+        popular: 'Popular: Rooftop',
+        price: 'From $25 per hour',
+        image: '/london.png',
+        alt: 'Tower Bridge in London'
+      },
+      {
+        id: 'dubai',
+        name: 'Dubai, UAE',
+        venueCount: 17,
+        description: 'Coastal energy, modern Venue',
+        popular: 'Popular: Rooftop',
+        price: 'From $50 per hour',
+        image: '/dubai.png',
+        alt: 'Atlantis resort on the Dubai coast'
+      }
+    ]
   }
 };

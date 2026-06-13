@@ -125,6 +125,23 @@ export interface TrustedCreatorsContent {
   reviews: TrustReview[];
 }
 
+export interface Destination {
+  id: string;
+  name: string;
+  venueCount: number;
+  description: string;
+  popular: string;
+  price: string;
+  image: string;
+  alt: string;
+}
+
+export interface DestinationsContent {
+  title: string;
+  description: string;
+  destinations: Destination[];
+}
+
 export interface LandingContent {
   navbar: NavbarContent;
   hero: HeroContent;
@@ -134,4 +151,5 @@ export interface LandingContent {
   vendorCtaBanner: VendorCtaBannerContent;
   perfectVenuePath: PerfectVenuePathContent;
   trustedCreators: TrustedCreatorsContent;
+  destinations: DestinationsContent;
 }

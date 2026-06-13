@@ -1,3 +1,4 @@
+import { Destinations } from './components/destinations';
 import { FeaturedVenues } from './components/featured-venues';
 import { Hero } from './components/hero';
 import { PerfectVenuePath } from './components/perfect-venue-path';
@@ -16,6 +17,7 @@ export function LandingPage() {
       <VendorCtaBanner />
       <PerfectVenuePath />
       <TrustedCreators />
+      <Destinations />
     </>
   );
 }
