@@ -1,5 +1,7 @@
 import Image from 'next/image';
 
+import { cn } from '@/lib/utils';
+
 import { landingContent } from '../content';
 
 interface CtaBannerProps {
@@ -8,10 +10,18 @@ interface CtaBannerProps {
   buttonLabel: string;
   illustrationSrc: string;
   illustrationAlt: string;
+  illustrationWidth?: number;
+  illustrationHeight?: number;
+  /** Desktop (xl+) position of the illustration within the card. */
+  illustrationClassName?: string;
   vectorSrc?: string;
+  /** Desktop (xl+) position of the vector accent within the card. */
+  vectorClassName?: string;
   gradient?: string;
   topBg?: string;
   bottomBg?: string;
+  /** Extra classes on the outer section (e.g. overlap with the footer). */
+  className?: string;
 }
 
 export function CtaBanner({
@@ -20,13 +30,18 @@ export function CtaBanner({
   buttonLabel,
   illustrationSrc,
   illustrationAlt,
+  illustrationWidth = 446,
+  illustrationHeight = 207,
+  illustrationClassName = 'top-[96px] left-[792px]',
   vectorSrc,
+  vectorClassName = 'top-[170px] left-[586px]',
   gradient = 'linear-gradient(90deg, #FF786A 0%, #FF4F37 50%, #FFC331 100%)',
   topBg = '#FDF1D2',
-  bottomBg = '#FFFFFF'
+  bottomBg = '#FFFFFF',
+  className
 }: CtaBannerProps) {
   return (
-    <section className='relative w-full'>
+    <section className={cn('relative w-full', className)}>
       <div
         aria-hidden
         className='absolute inset-x-0 top-0 h-1/2'
@@ -59,8 +74,8 @@ export function CtaBanner({
             <Image
               src={illustrationSrc}
               alt={illustrationAlt}
-              width={447}
-              height={204}
+              width={illustrationWidth}
+              height={illustrationHeight}
               className='w-full max-w-[380px] object-contain'
             />
           </div>
@@ -98,8 +113,8 @@ export function CtaBanner({
               <Image
                 src={illustrationSrc}
                 alt={illustrationAlt}
-                width={447}
-                height={204}
+                width={illustrationWidth}
+                height={illustrationHeight}
                 className='h-full max-h-[210px] w-auto object-contain object-bottom'
               />
             </div>
@@ -124,7 +139,7 @@ export function CtaBanner({
 
           {/* Vector — Figma desktop: 197×57, top 170, left 586 */}
           {vectorSrc && (
-            <div className='absolute top-[170px] left-[586px] hidden xl:block'>
+            <div className={cn('absolute hidden xl:block', vectorClassName)}>
               <Image
                 src={vectorSrc}
                 alt=''
@@ -135,12 +150,14 @@ export function CtaBanner({
             </div>
           )}
 
-          <div className='absolute top-[96px] left-[792px] hidden xl:block'>
+          <div
+            className={cn('absolute hidden xl:block', illustrationClassName)}
+          >
             <Image
               src={illustrationSrc}
               alt={illustrationAlt}
-              width={446}
-              height={207}
+              width={illustrationWidth}
+              height={illustrationHeight}
               className='object-contain'
             />
           </div>

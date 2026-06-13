@@ -1,5 +1,7 @@
+import { DestinationCta } from './components/destination-cta';
 import { Destinations } from './components/destinations';
 import { FeaturedVenues } from './components/featured-venues';
+import { Footer } from './components/footer';
 import { Hero } from './components/hero';
 import { PerfectVenuePath } from './components/perfect-venue-path';
 import { VenueCategories } from './components/venue-categories';
@@ -18,6 +20,9 @@ export function LandingPage() {
       <PerfectVenuePath />
       <TrustedCreators />
       <Destinations />
+      {/* CTA overlaps the footer's rounded top — keep them adjacent. */}
+      <DestinationCta />
+      <Footer />
     </>
   );
 }

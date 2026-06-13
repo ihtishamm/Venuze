@@ -20,6 +20,11 @@ function VendorCategoryCard({ category }: { category: VendorCategory }) {
           sizes='(max-width: 640px) 260px, 301px'
           className='object-cover'
         />
+        {/* Gradient scrim for title legibility */}
+        <div className='absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/60 to-transparent' />
+        <h3 className='absolute bottom-[20px] left-[20px] text-[24px] leading-[30px] font-semibold text-white'>
+          {category.name}
+        </h3>
       </div>
     </div>
   );

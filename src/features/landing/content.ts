@@ -74,31 +74,31 @@ export const landingContent: LandingContent = {
       {
         id: 'caterers',
         name: 'Caterers',
-        image: '/caterer.png',
+        image: '/caterers_1.png',
         alt: 'Catering setup with chafing dishes'
       },
       {
         id: 'decorators',
         name: 'Decorators',
-        image: '/decorators.png',
+        image: '/decorators_2.png',
         alt: 'Floral arch decoration for events'
       },
       {
         id: 'photographers',
         name: 'Photographers',
-        image: '/photographers.png',
+        image: '/photographers_3.png',
         alt: 'Photographer with professional camera'
       },
       {
         id: 'entertainment',
         name: 'Entertainment',
-        image: '/entertainment.png',
+        image: '/entertainment_4.png',
         alt: 'Couple enjoying entertainment at a fair'
       },
       {
         id: 'florists',
         name: 'Florists',
-        image: '/caterer.png',
+        image: '/decorators_2.png',
         alt: 'Elegant floral arrangements for events'
       }
     ]
@@ -337,5 +337,65 @@ export const landingContent: LandingContent = {
         alt: 'Atlantis resort on the Dubai coast'
       }
     ]
+  },
+  destinationCta: {
+    title: 'Turn Your Venue into a Destination',
+    description:
+      'List your space on Venuze and unlock new revenue opportunities. Reach clients looking for venues just like yours.',
+    buttonLabel: 'List Your Venue'
+  },
+  footer: {
+    tagline:
+      'Make it memorable—book the perfect venue and the pros who make it shine.',
+    columns: [
+      {
+        title: 'Venuze',
+        links: [
+          { label: 'About', href: '#' },
+          { label: 'News', href: '#' },
+          { label: 'Careers', href: '#' },
+          { label: 'Investors', href: '#' }
+        ]
+      },
+      {
+        title: 'Support',
+        links: [
+          { label: 'Listings your venue', href: '#' },
+          { label: 'Listing your service', href: '#' },
+          { label: 'Help center', href: '#' },
+          { label: 'FAQ', href: '#' }
+        ]
+      },
+      {
+        title: 'Explore',
+        links: [
+          { label: 'Venue types', href: '#' },
+          { label: 'Venue features', href: '#' },
+          { label: 'Service options', href: '#' },
+          { label: 'Locations', href: '#' }
+        ]
+      },
+      {
+        title: 'Legal & Privacy',
+        links: [
+          { label: 'Terms of service', href: '#' },
+          { label: 'Payment & refund policy', href: '#' },
+          { label: 'Host agreement', href: '#' },
+          { label: 'Vendor agreement', href: '#' }
+        ]
+      }
+    ],
+    contact: {
+      heading: 'Get in Touch',
+      emailPlaceholder: 'Email Address',
+      messagePlaceholder: 'Message',
+      submitLabel: 'Send'
+    },
+    socials: [
+      { id: 'x', label: 'X (Twitter)', href: '#' },
+      { id: 'facebook', label: 'Facebook', href: '#' },
+      { id: 'instagram', label: 'Instagram', href: '#' }
+    ],
+    copyright: '© 2026 Venuze. All rights reserved.'
   }
 };

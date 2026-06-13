@@ -142,6 +142,38 @@ export interface DestinationsContent {
   destinations: Destination[];
 }
 
+export type SocialPlatform = 'x' | 'facebook' | 'instagram';
+
+export interface FooterLink {
+  label: string;
+  href: string;
+}
+
+export interface FooterLinkColumn {
+  title: string;
+  links: FooterLink[];
+}
+
+export interface FooterSocial {
+  id: SocialPlatform;
+  label: string;
+  href: string;
+}
+
+export interface FooterContent {
+  /** Tagline shown next to the logo. */
+  tagline: string;
+  columns: FooterLinkColumn[];
+  contact: {
+    heading: string;
+    emailPlaceholder: string;
+    messagePlaceholder: string;
+    submitLabel: string;
+  };
+  socials: FooterSocial[];
+  copyright: string;
+}
+
 export interface LandingContent {
   navbar: NavbarContent;
   hero: HeroContent;
@@ -152,4 +184,6 @@ export interface LandingContent {
   perfectVenuePath: PerfectVenuePathContent;
   trustedCreators: TrustedCreatorsContent;
   destinations: DestinationsContent;
+  destinationCta: VendorCtaBannerContent;
+  footer: FooterContent;
 }
