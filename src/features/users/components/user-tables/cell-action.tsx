@@ -8,8 +8,15 @@ import {
   DropdownMenuLabel,
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
-import { User } from '@/constants/mock-api';
-import { IconDotsVertical, IconTrash } from '@tabler/icons-react';
+import { useDeleteUser } from '@/features/users/hooks/use-user-mutations';
+import { useUsersUiStore } from '@/features/users/store/users-ui-store';
+import type { User } from '@/types/user';
+import {
+  IconDotsVertical,
+  IconEdit,
+  IconEye,
+  IconTrash
+} from '@tabler/icons-react';
 import { useState } from 'react';
 
 interface CellActionProps {
@@ -17,10 +24,14 @@ interface CellActionProps {
 }
 
 export const CellAction: React.FC<CellActionProps> = ({ data }) => {
-  const [loading] = useState(false);
   const [open, setOpen] = useState(false);
+  const openEdit = useUsersUiStore((s) => s.openEdit);
+  const openView = useUsersUiStore((s) => s.openView);
+  const { mutate: deleteUser, isPending } = useDeleteUser();
 
-  const onConfirm = async () => {};
+  const onConfirm = () => {
+    deleteUser(data.id, { onSuccess: () => setOpen(false) });
+  };
 
   return (
     <>
@@ -28,7 +39,7 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
         isOpen={open}
         onClose={() => setOpen(false)}
         onConfirm={onConfirm}
-        loading={loading}
+        loading={isPending}
       />
       <DropdownMenu modal={false}>
         <DropdownMenuTrigger asChild>
@@ -39,6 +50,12 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
         </DropdownMenuTrigger>
         <DropdownMenuContent align='end'>
           <DropdownMenuLabel>Actions</DropdownMenuLabel>
+          <DropdownMenuItem onClick={() => openView(data.id)}>
+            <IconEye className='mr-2 h-4 w-4' /> View
+          </DropdownMenuItem>
+          <DropdownMenuItem onClick={() => openEdit(data.id)}>
+            <IconEdit className='mr-2 h-4 w-4' /> Edit
+          </DropdownMenuItem>
           <DropdownMenuItem onClick={() => setOpen(true)}>
             <IconTrash className='mr-2 h-4 w-4' /> Delete
           </DropdownMenuItem>

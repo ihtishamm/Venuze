@@ -1,24 +1,24 @@
 'use client';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Badge } from '@/components/ui/badge';
 import { DataTableColumnHeader } from '@/components/ui/table/data-table-column-header';
-import { User } from '@/constants/mock-api';
+import type { User } from '@/types/user';
 import { Column, ColumnDef } from '@tanstack/react-table';
-import { CheckCircle2, Text, XCircle } from 'lucide-react';
+import { Text } from 'lucide-react';
 import { CellAction } from './cell-action';
-import { ROLE_OPTIONS } from './options';
 
 export const columns: ColumnDef<User>[] = [
   {
-    accessorKey: 'avatar_url',
+    accessorKey: 'avatar',
     header: 'AVATAR',
     cell: ({ row }) => {
-      const name = row.getValue<User['name']>('name');
+      const user = row.original;
+      const name = `${user.firstName} ${user.lastName}`;
       return (
         <Avatar className='h-9 w-9'>
-          <AvatarImage src={row.getValue('avatar_url')} alt={name} />
+          <AvatarImage src={user.avatar} alt={name} />
           <AvatarFallback className='rounded-lg'>
-            {name?.slice(0, 2)?.toUpperCase()}
+            {user.firstName?.[0]}
+            {user.lastName?.[0]}
           </AvatarFallback>
         </Avatar>
       );
@@ -26,11 +26,15 @@ export const columns: ColumnDef<User>[] = [
   },
   {
     id: 'name',
-    accessorKey: 'name',
+    accessorFn: (row) => `${row.firstName} ${row.lastName}`,
     header: ({ column }: { column: Column<User, unknown> }) => (
       <DataTableColumnHeader column={column} title='Name' />
     ),
-    cell: ({ cell }) => <div>{cell.getValue<User['name']>()}</div>,
+    cell: ({ row }) => (
+      <div className='font-medium'>
+        {row.original.firstName} {row.original.lastName}
+      </div>
+    ),
     meta: {
       label: 'Name',
       placeholder: 'Search users...',
@@ -41,40 +45,10 @@ export const columns: ColumnDef<User>[] = [
   },
   {
     accessorKey: 'email',
-    header: 'EMAIL'
-  },
-  {
-    id: 'role',
-    accessorKey: 'role',
-    header: ({ column }: { column: Column<User, unknown> }) => (
-      <DataTableColumnHeader column={column} title='Role' />
-    ),
-    cell: ({ cell }) => (
-      <Badge variant='outline' className='capitalize'>
-        {cell.getValue<User['role']>()}
-      </Badge>
-    ),
-    enableColumnFilter: true,
-    meta: {
-      label: 'roles',
-      variant: 'multiSelect',
-      options: ROLE_OPTIONS
-    }
-  },
-  {
-    accessorKey: 'status',
-    header: 'STATUS',
-    cell: ({ cell }) => {
-      const status = cell.getValue<User['status']>();
-      const Icon = status === 'active' ? CheckCircle2 : XCircle;
-
-      return (
-        <Badge variant='outline' className='capitalize'>
-          <Icon />
-          {status}
-        </Badge>
-      );
-    }
+    header: 'EMAIL',
+    cell: ({ row }) => (
+      <span className='text-muted-foreground'>{row.original.email}</span>
+    )
   },
   {
     id: 'actions',
