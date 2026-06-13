@@ -13,7 +13,7 @@ export function SearchHeader({ summary }: { summary: SearchSummary }) {
 
   return (
     <header className='sticky top-0 z-40 w-full border-b border-[#E5E5E5] bg-white shadow-[0px_4px_10px_0px_#0000001A]'>
-      <div className='mx-auto flex h-[88px] max-w-[1440px] items-center justify-between gap-3 px-4 md:px-8'>
+      <div className='mx-auto flex h-[88px] max-w-[1440px] items-center justify-between gap-3 px-4 md:px-6'>
         <Link href='/' aria-label='Venuze home'>
           <Logo label={logo.label} />
         </Link>

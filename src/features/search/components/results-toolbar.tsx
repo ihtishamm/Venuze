@@ -1,6 +1,6 @@
 'use client';
 
-import { ChevronDown, X } from 'lucide-react';
+import { X } from 'lucide-react';
 
 import { type SearchFilterChip } from '@/types/search';
 
@@ -9,30 +9,26 @@ export function ResultsToolbar({
   noun,
   where,
   chips,
-  sortLabel,
   onRemoveChip
 }: {
   count: number;
   noun: string;
   where: string;
   chips: SearchFilterChip[];
-  sortLabel: string;
   onRemoveChip: (id: string) => void;
 }) {
   return (
-    <div className='flex flex-wrap items-center gap-3'>
-      <p className='text-[14px] text-[#6B7280]'>
-        <span className='font-semibold text-black'>
-          {count.toLocaleString()}
-        </span>{' '}
-        {noun} near <span className='font-semibold text-black'>{where}</span>
+    <div className='flex items-center gap-3'>
+      <p className='shrink-0 text-[14px] text-[#6B7280]'>
+        {count.toLocaleString()}{' '}
+        <span className='font-semibold text-black'>{noun}</span> near {where}
       </p>
 
-      <div className='flex flex-1 flex-wrap items-center gap-2'>
+      <div className='flex flex-1 items-center gap-2 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden'>
         {chips.map((chip) => (
           <span
             key={chip.id}
-            className='flex h-[28px] items-center gap-1.5 rounded-full border border-[#E5E5E5] bg-[#F9FAFB] px-3 text-[12px] font-medium text-[#364153]'
+            className='flex h-[32px] shrink-0 items-center gap-[4.6px] rounded-[999px] border-[1.5px] border-[#E6E6E6] bg-white px-[15px] text-center text-[11.05px] leading-[18.41px] font-medium tracking-[-0.03em] text-[#364153]'
           >
             {chip.label}
             <button
@@ -46,14 +42,6 @@ export function ResultsToolbar({
           </span>
         ))}
       </div>
-
-      <button
-        type='button'
-        className='ml-auto flex h-[28px] shrink-0 items-center gap-1.5 rounded-full border border-[#E5E5E5] px-3 text-[12px] font-medium text-[#364153]'
-      >
-        Sort by: <span className='font-semibold text-black'>{sortLabel}</span>
-        <ChevronDown className='size-3.5' />
-      </button>
     </div>
   );
 }

@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import { Heart, MapPin, Maximize2 } from 'lucide-react';
+import { MapPin, Maximize2 } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
 import { type SearchVenue } from '@/types/search';
@@ -12,7 +12,7 @@ export function ResultsMap({ venues }: { venues: SearchVenue[] }) {
   const selected = venues.find((v) => v.id === selectedId) ?? null;
 
   return (
-    <div className='relative h-full w-full overflow-hidden rounded-[10px] bg-[#E8EDE6]'>
+    <div className='relative h-full w-full overflow-hidden bg-[#E8EDE6] lg:rounded-[10px]'>
       {/* Faux map terrain — water, parks, roads — purely decorative */}
       <div
         aria-hidden
@@ -40,12 +40,11 @@ export function ResultsMap({ venues }: { venues: SearchVenue[] }) {
       <button
         type='button'
         aria-label='Expand map'
-        className='absolute top-4 right-4 z-20 flex size-9 items-center justify-center rounded-md bg-white text-black shadow-md'
+        className='absolute top-4 right-4 z-20 flex size-9 items-center justify-center rounded-full bg-white text-black shadow-md'
       >
         <Maximize2 className='size-4' />
       </button>
 
-      {/* Markers */}
       {venues.map((venue) => {
         const isActive = venue.id === selectedId;
         return (
@@ -55,26 +54,18 @@ export function ResultsMap({ venues }: { venues: SearchVenue[] }) {
             onClick={() => setSelectedId(venue.id)}
             aria-label={`Show ${venue.name}`}
             className={cn(
-              'absolute z-10 -translate-x-1/2 -translate-y-1/2 transition-transform',
-              isActive ? 'scale-125' : 'hover:scale-110'
+              'absolute -translate-x-1/2 -translate-y-full transition-transform hover:scale-110',
+              isActive ? 'z-20' : 'z-10'
             )}
             style={{ top: `${venue.pin.top}%`, left: `${venue.pin.left}%` }}
           >
-            <span
-              className={cn(
-                'flex size-9 items-center justify-center rounded-full rounded-bl-none shadow-md',
-                isActive ? 'bg-primary' : 'bg-white'
-              )}
-            >
-              <Heart
-                className={cn(
-                  'size-4 -rotate-45',
-                  isActive
-                    ? 'fill-white text-white'
-                    : 'fill-primary text-primary'
-                )}
-              />
-            </span>
+            <Image
+              src={isActive ? '/selected_mapicon.svg' : '/mapicon.svg'}
+              alt=''
+              width={43}
+              height={50}
+              className='h-auto w-[28px]'
+            />
           </button>
         );
       })}
@@ -82,7 +73,7 @@ export function ResultsMap({ venues }: { venues: SearchVenue[] }) {
       {/* Popup for the selected venue */}
       {selected && (
         <div
-          className='absolute z-20 w-[180px] -translate-x-1/2 -translate-y-[calc(100%+18px)] overflow-hidden rounded-[10px] bg-white shadow-[0px_4px_16px_rgba(0,0,0,0.18)]'
+          className='absolute z-20 w-[180px] -translate-x-1/2 -translate-y-[calc(100%+58px)] overflow-hidden rounded-[10px] bg-white shadow-[0px_4px_16px_rgba(0,0,0,0.18)]'
           style={{ top: `${selected.pin.top}%`, left: `${selected.pin.left}%` }}
         >
           <div className='relative h-[96px] w-full'>

@@ -29,7 +29,7 @@ export function ResultsList({ venues }: { venues: SearchVenue[] }) {
   }
 
   return (
-    <div className='flex flex-wrap justify-center gap-6 sm:justify-start'>
+    <div className='flex flex-wrap justify-center gap-4 sm:justify-start'>
       {venues.map((venue) => (
         <VenueCard key={venue.id} venue={venue} />
       ))}

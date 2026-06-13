@@ -19,7 +19,10 @@ import { SearchHeader } from './components/search-header';
 function countActiveFilters(filters: SearchFilters): number {
   const { capacity, price } = searchContent.filterDrawer;
   let count = filters.venueTypes.length + filters.occasions.length;
-  if (filters.capacity[0] !== capacity.min || filters.capacity[1] !== capacity.max)
+  if (
+    filters.capacity[0] !== capacity.min ||
+    filters.capacity[1] !== capacity.max
+  )
     count += 1;
   if (filters.price[0] !== price.min || filters.price[1] !== price.max)
     count += 1;
@@ -28,7 +31,7 @@ function countActiveFilters(filters: SearchFilters): number {
 }
 
 export function SearchPage({ summary }: { summary: SearchSummary }) {
-  const { categories, filterChips, sortLabel, resultNoun, keywordPlaceholder } =
+  const { categories, filterChips, resultNoun, keywordPlaceholder } =
     searchContent;
 
   const [activeCategory, setActiveCategory] = useState('photo-studio');
@@ -62,7 +65,7 @@ export function SearchPage({ summary }: { summary: SearchSummary }) {
 
       {/* Keyword + filter bar — full-width row under the header */}
       <div className='w-full shrink-0 border-b border-[#D0D0D0]'>
-        <div className='mx-auto w-full max-w-[1440px] px-4 md:px-8'>
+        <div className='mx-auto w-full max-w-[1440px] px-4 md:px-6'>
           <KeywordToolbar
             value={keyword}
             placeholder={keywordPlaceholder}
@@ -75,7 +78,7 @@ export function SearchPage({ summary }: { summary: SearchSummary }) {
 
       {/* Categories — full-width row with a line beneath it */}
       <div className='w-full shrink-0 border-b border-[#E5E5E5]'>
-        <div className='mx-auto flex h-[80px] w-full max-w-[1440px] items-center px-4 md:px-8'>
+        <div className='mx-auto flex h-[80px] w-full max-w-[1440px] items-center px-4 md:px-6'>
           <CategoryStrip
             categories={categories}
             activeCategory={activeCategory}
@@ -84,39 +87,78 @@ export function SearchPage({ summary }: { summary: SearchSummary }) {
         </div>
       </div>
 
-      {/* Results toolbar — hidden when there are no results */}
+      {/* Tablet/mobile header — count + list⇄map toggle, shown in both views. */}
       {hasResults && (
-        <div className='mx-auto w-full max-w-[1440px] shrink-0 px-4 pt-3 md:px-8'>
-          <ResultsToolbar
-            count={3456}
-            noun={resultNoun}
-            where={summary.where}
-            chips={chips}
-            sortLabel={sortLabel}
-            onRemoveChip={removeChip}
-          />
+        <div className='mx-auto w-full max-w-[1440px] shrink-0 px-4 pt-3 pb-2 md:px-6 lg:hidden'>
+          <div className='flex items-center justify-between gap-3'>
+            <p className='text-[14px] text-[#6B7280]'>
+              {(3456).toLocaleString()}{' '}
+              <span className='font-semibold text-black'>{resultNoun}</span>{' '}
+              near {summary.where}
+            </p>
+            <button
+              type='button'
+              onClick={() =>
+                setMobileView((v) => (v === 'list' ? 'map' : 'list'))
+              }
+              className='flex h-[36px] shrink-0 items-center gap-2 rounded-[10px] border border-[#E5E5E5] bg-white px-4 text-[13px] font-semibold text-black shadow-sm'
+            >
+              {mobileView === 'list' ? (
+                <>
+                  <MapIcon className='size-4' />
+                  Show Map
+                </>
+              ) : (
+                <>
+                  <List className='size-4' />
+                  Show List
+                </>
+              )}
+            </button>
+          </div>
         </div>
       )}
 
-      {/* Results — split on desktop, single toggled view below lg */}
-      <div className='relative mx-auto w-full max-w-[1440px] flex-1 overflow-hidden px-4 pt-4 pb-4 md:px-8'>
-        <div className='flex h-full gap-6'>
-          {/* List */}
+      <div className='mx-auto w-full max-w-[1440px] flex-1 overflow-hidden lg:px-6 lg:pt-3 lg:pb-4'>
+        <div className='flex h-full lg:gap-4'>
           <div
             className={cn(
-              'h-full overflow-y-auto pb-4 [scrollbar-width:thin]',
-              hasResults ? 'lg:w-[62%]' : 'lg:w-full',
-              mobileView === 'list' ? 'block w-full' : 'hidden lg:block'
+              'flex h-full flex-col px-4 lg:p-0',
+              hasResults ? 'lg:flex-1' : 'lg:w-full',
+              mobileView === 'list' ? 'flex w-full' : 'hidden lg:flex'
             )}
           >
-            <ResultsList venues={venues} />
+            {hasResults && (
+              <div className='hidden shrink-0 pb-3 lg:block'>
+                <ResultsToolbar
+                  count={3456}
+                  noun={resultNoun}
+                  where={summary.where}
+                  chips={chips}
+                  onRemoveChip={removeChip}
+                />
+              </div>
+            )}
+
+            {/* Scrollable list — owns the custom 7px rounded scrollbar */}
+            <div
+              className={cn(
+                'min-h-0 flex-1 overflow-y-auto pr-1.5 pb-4',
+                '[scrollbar-color:#D9D9D9_transparent] [scrollbar-width:thin]',
+                '[&::-webkit-scrollbar]:w-[7px]',
+                '[&::-webkit-scrollbar-track]:bg-transparent',
+                '[&::-webkit-scrollbar-thumb]:rounded-[50px] [&::-webkit-scrollbar-thumb]:bg-[#D9D9D9]'
+              )}
+            >
+              <ResultsList venues={venues} />
+            </div>
           </div>
 
-          {/* Map — hidden entirely when there are no results */}
+          {/* Map — fixed 421px rail on desktop (full height), full-bleed below lg */}
           {hasResults && (
             <div
               className={cn(
-                'h-full lg:block lg:w-[38%]',
+                'h-full lg:block lg:w-[421px] lg:shrink-0',
                 mobileView === 'map' ? 'block w-full' : 'hidden lg:block'
               )}
             >
@@ -124,28 +166,6 @@ export function SearchPage({ summary }: { summary: SearchSummary }) {
             </div>
           )}
         </div>
-
-        {/* View toggle — tablet/mobile only, and only when a map exists */}
-        <button
-          type='button'
-          onClick={() => setMobileView((v) => (v === 'list' ? 'map' : 'list'))}
-          className={cn(
-            'absolute bottom-6 left-1/2 z-30 flex h-[44px] -translate-x-1/2 items-center gap-2 rounded-full bg-black px-5 text-[14px] font-semibold text-white shadow-lg lg:hidden',
-            !hasResults && 'hidden'
-          )}
-        >
-          {mobileView === 'list' ? (
-            <>
-              <MapIcon className='size-4' />
-              Show Map
-            </>
-          ) : (
-            <>
-              <List className='size-4' />
-              Show List
-            </>
-          )}
-        </button>
       </div>
 
       <FilterDrawer
